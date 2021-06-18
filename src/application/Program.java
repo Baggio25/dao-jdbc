@@ -1,9 +1,10 @@
 package application;
 
-import javax.swing.JOptionPane;
+import java.util.List;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.entities.Department;
 import model.entities.Seller;
 
 public class Program {
@@ -13,7 +14,15 @@ public class Program {
 		SellerDao sellerDao  = DaoFactory.createSellerDao();
 		
 		Seller seller = sellerDao.findById(3);
+		System.out.println("Test 1: SELLER findById \n" + seller);
+
+		System.out.println("=================================" );
 		
-		JOptionPane.showMessageDialog(null, "Test 1: \n" + seller);
+		Department department = new Department(2, null);
+		List<Seller> list = sellerDao.findByDepartment(department);
+		System.out.println("Test 2: SELLER findByDepartment \n");
+		for(Seller obj : list) {
+			System.out.println(obj);
+		}
 	}
 }
