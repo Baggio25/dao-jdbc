@@ -14,9 +14,9 @@ public class Program {
 
 		SellerDao sellerDao  = DaoFactory.createSellerDao();
 		
-		/*Seller seller = sellerDao.findById(3);
+		Seller seller = sellerDao.findById(3);
 		
-		 * System.out.println("Test 1: SELLER findById \n" + seller);
+		 /* System.out.println("Test 1: SELLER findById \n" + seller);
 		 * 
 		 * System.out.println("=================================" );
 		 * 
@@ -35,10 +35,20 @@ public class Program {
 		 * System.out.println(obj); }
 		 */
 		
+			/*
+			 * System.out.println("=================================" );
+			 * System.out.println("Test 4: SELLER insert \n" ); Seller seller = new
+			 * Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, department);
+			 * sellerDao.insert(seller); System.out.println("Inserted! New id = " +
+			 * seller.getId());
+			 */
+		
 		System.out.println("=================================" );
-		System.out.println("Test 4: SELLER insert \n" );
-		Seller seller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, department);
-		sellerDao.insert(seller);
-		System.out.println("Inserted! New id = " + seller.getId());
+		System.out.println("Test 5: SELLER update \n" );
+		seller = sellerDao.findById(1);
+		seller.setName("João da Silva");
+		seller.setEmail("joao.da.silva@gmail.com");
+		sellerDao.update(seller); 
+		System.out.println("Update Completed");
 	}
 }
