@@ -1,7 +1,6 @@
 package application;
 
-import java.util.Date;
-import java.util.List;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -12,8 +11,9 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		SellerDao sellerDao  = DaoFactory.createSellerDao();
+		Scanner sc = new Scanner(System.in);
 		
+		SellerDao sellerDao  = DaoFactory.createSellerDao();
 		Seller seller = sellerDao.findById(3);
 		
 		 /* System.out.println("Test 1: SELLER findById \n" + seller);
@@ -43,12 +43,21 @@ public class Program {
 			 * seller.getId());
 			 */
 		
+			/*
+			 * System.out.println("=================================" );
+			 * System.out.println("Test 5: SELLER update \n" ); seller =
+			 * sellerDao.findById(1); seller.setName("João da Silva");
+			 * seller.setEmail("joao.da.silva@gmail.com"); sellerDao.update(seller);
+			 * System.out.println("Update Completed");
+			 */
+		
 		System.out.println("=================================" );
-		System.out.println("Test 5: SELLER update \n" );
-		seller = sellerDao.findById(1);
-		seller.setName("João da Silva");
-		seller.setEmail("joao.da.silva@gmail.com");
-		sellerDao.update(seller); 
-		System.out.println("Update Completed");
+		System.out.println("Test 6: SELLER delete \n" );
+		System.out.println("Enter id for delete test: ");
+		int id = sc.nextInt();
+		sellerDao.deleteById(id);
+		sc.close();
+		System.out.println("Delete Completed");
+		
 	}
 }
